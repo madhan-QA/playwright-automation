@@ -1,0 +1,34 @@
+{
+    "sales": {
+        "indicators": ["sales", "revenue", "deal", "pipeline", "customer"],
+        "expected_columns": ["Customer", "Deal", "Revenue", "Total", "Quarter", "Region"],
+        "sum_validations": [
+            {"detail": "Revenue", "total": "Total", "groupby": "Region"}
+        ],
+        "negative_check_columns": ["Revenue", "Total"]
+    },
+    "churn": {
+        "indicators": ["churn", "retention", "attrition", "cancellation"],
+        "expected_columns": ["Customer", "Status", "Risk Score", "Retention Actions", "Total Actions"],
+        "sum_validations": [
+            {"detail": "Retention Actions", "total": "Total Actions"}
+        ],
+        "negative_check_columns": ["Risk Score", "Retention Actions", "Total Actions"]
+    },
+    "spancop": {
+        "indicators": ["span", "cop", "movement", "service"],
+        "expected_columns": ["Service", "Movement", "Value", "Total"],
+        "sum_validations": [
+            {"detail": "Value", "total": "Total", "groupby": "Service"}
+        ],
+        "negative_check_columns": ["Value", "Total"]
+    },
+    "xsell": {
+        "indicators": ["xsell", "cross", "upsell", "upgrade"],
+        "expected_columns": ["Customer", "Product", "Cross-sell", "Up-sell", "Total"],
+        "sum_validations": [
+            {"detail": ["Cross-sell", "Up-sell"], "total": "Total", "groupby": "Customer"}
+        ],
+        "negative_check_columns": ["Cross-sell", "Up-sell", "Total"]
+    }
+}

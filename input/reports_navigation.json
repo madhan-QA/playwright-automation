@@ -1,0 +1,267 @@
+[
+    {
+      "name": "Churn Dashboard",
+      "navigation": {
+        "report": "CHURN_DASHBOARD_BUTTON",
+        "view": "CHRUN_CUSTOMER_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "DOWNLOAD_EXCEL_BUTTON",
+        "filename": "churn_customer"
+      }
+    },
+    {
+      "name": "Churn Dashboard",
+      "navigation": {
+        "report": "CHURN_DASHBOARD_BUTTON",
+        "view": "SKUS_CHURN_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "DOWNLOAD_EXCEL_BUTTON",
+        "filename": "sku_chrun"
+      }
+    },
+    {
+      "name": "X-Sell Dashboard",
+      "navigation": {
+        "report": "XSELL_DASHBOARD_BUTTON",
+        "view": "TRENDS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "X-Sell Dashboard"
+      }
+    },
+    {
+      "name": "X-Sell Dashboard",
+      "navigation": {
+        "report": "XSELL_DASHBOARD_BUTTON",
+        "view": "TRENDS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTONN",
+        "filename": "X-Sell Dashboard"
+      }
+    },
+    {
+      "name": "X-Sell Dashboard",
+      "navigation": {
+        "report": "XSELL_DASHBOARD_BUTTON",
+        "view": "XSELL_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "X-Sell Dashboard"
+      }
+    },
+    {
+      "name": "Pipeline Dashboard",
+      "navigation": {
+        "report": "PIPELINE_DASHBOARD_BUTTON",
+        "view": "PIPELINE_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "Pipeline"
+      }
+    },
+    {
+      "name": "Pipeline Dashboard",
+      "navigation": {
+        "report": "PIPELINE_DASHBOARD_BUTTON",
+        "view": "NEW_WIN_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "NewWin"
+      }
+    },
+    {
+      "name": "SPANCOP Dashboard",
+      "navigation": {
+        "report": "SPANCOP_DASHBOARD_BUTTON",
+        "view": "SUMMARY_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "SPANCOP Report"
+      }
+    },
+    {
+      "name": "SPANCOP Dashboard",
+      "navigation": {
+        "report": "SPANCOP_DASHBOARD_BUTTON",
+        "view": "DSR_DETAILS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "SPANCOP Report"
+      }
+    },
+    {
+      "name": "SPANCOP Movement Dashboard",
+      "navigation": {
+        "report": "SPANCOP_MOVEMENT_DASHBOARD_BUTTON",
+        "view": "SPANCOP_MOVEMENT_DASHBOARD_BUTTON"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "SPANCOP Movement Report"
+      }
+    },
+    {
+      "name": "CPT Dashboard",
+      "navigation": {
+        "report": "CPT_DASHBOARD_BUTTON",
+        "view": "DSR_DETAILS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "CPT Dashboard"
+      }
+    },
+    {
+      "name": "CPT Dashboard",
+      "navigation": {
+        "report": "CPT_DASHBOARD_BUTTON",
+        "view": "SUMMARY_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "CPT Dashboard"
+      }
+    },
+    {
+      "name": "Pipeline",
+      "navigation": {
+        "report": "PIPELINE_BUTTON",
+        "view": "SUMMARY_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "Pipeline"
+      }
+    },
+    {
+      "name": "Pipeline",
+      "navigation": {
+        "report": "PIPELINE_BUTTON",
+        "view": "DSR_DETAILS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "Pipeline"
+      }
+    },
+    {
+      "name": "Sales",
+      "navigation": {
+        "report": "SALES_BUTTON",
+        "view": "DSR_DETAILS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "Sales"
+      }
+    },
+    {
+      "name": "Sales",
+      "navigation": {
+        "report": "SALES_BUTTON",
+        "view": "SUMMARY_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "Sales"
+      }
+    },
+    {
+      "name": "Churn Analysis",
+      "navigation": {
+        "report": "CHURN_ANALYSIS_BUTTON",
+        "view": "CHURN_VS_NEW_WIN_BUTTON"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "XLS_DOWNLOAD_BUTTON",
+        "filename": "CHURN_VS_NEW_WIN_BUTTON"
+      }
+    },
+    {
+      "name": "Churn vs Regained",
+      "navigation": {
+        "report": "CHURN_VS_REGAINED_BUTTON",
+        "view": "DSR_DETAILS_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "DOWNLOAD_EXCEL_BUTTON",
+        "filename": "Churn Action"
+      }
+    },
+    {
+      "name": "Churn vs Regained",
+      "navigation": {
+        "report": "CHURN_VS_REGAINED_BUTTON",
+        "view": "SUMMARY_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "DOWNLOAD_EXCEL_BUTTON",
+        "filename": "Churn Action"
+      }
+    },
+    {
+      "name": "Churn Dashboard",
+      "navigation": {
+        "report": "CHURN_DASHBOARD_BUTTON",
+        "view": "PROJECTED_CHURN_LINK"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "projected churn"
+      }
+    },
+    {
+      "name": "Sales Dashboard",
+      "navigation": {
+        "report": "SALES_DASHBOARD_BUTTON",
+        "view": "DASHBOARD_VIEW_BUTTON"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "Sales Dashboard"
+      }
+    },
+    {
+      "name": "Sales Dashboard",
+      "navigation": {
+        "report": "SALES_DASHBOARD_BUTTON",
+        "view": "DASHBOARD_VIEW_BUTTON"
+      },
+      "download": {
+        "button": "MENU_BUTTON",
+        "selector": "COMBINED_DOWNLOAD_BUTTON",
+        "filename": "Sales Dashboard"
+      }
+    }
+
+  ]

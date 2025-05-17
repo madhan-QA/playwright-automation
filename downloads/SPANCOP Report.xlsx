@@ -1,0 +1,213 @@
+
+<head>
+
+	<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+	<title></title>
+	<style type="text/css">
+		#maintable th {
+			bgcolor: "#d9d9d9";
+			color: #DD1D21;
+		}
+
+		#maintable td.blue {
+			color: #00F;
+		}
+
+		#maintable th .dis_name {
+			width: 300px;
+			color: red;
+
+		}
+	</style>
+</head>
+<html>
+
+<body>
+	<table id="maintable">
+		<thead>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th bgcolor="#d9d9d9">
+					<font color="#DD1D21">Downloaded by:</font>
+				</th>
+				<th colspan="3">
+					Dummy Distrib | 16-May-2025 | 05:33 pm GMT+5:30
+				</th>
+			</tr>
+			<tr>
+				<td colspan="11" align="right"><div class='filter_list'>Filters - LOB <span>All</span>,
+	Sector <span>All</span></div></td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<th align="left" colspan="2">SPANCOP Dashboard</th>
+			</tr>
+			<tr>
+				<th rowspan="3"></th>
+				<th rowspan="2" colspan="2">
+					<font color="#DD1D21">Suspect</font>
+				</th>
+				<th colspan="4">
+					<font color="#DD1D21">Open</font>
+				</th>
+				<th colspan="2">
+					<font color="#DD1D21">Won</font>
+				</th>
+				<th rowspan="2" colspan="2">
+					<font color="#DD1D21">Lost</font>
+				</th>
+			</tr>
+			<tr>
+				<th colspan="2">
+					<font color="#DD1D21">Prospect / Approach</font>
+				</th>
+				<th colspan="2">
+					<font color="#DD1D21">Negotiate</font>
+				</th>
+				<th colspan="2">
+					<font color="#DD1D21">Order</font>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<font color="#DD1D21">Volume ( L )</font>
+				</th>
+				<th>
+					<font color="#DD1D21">No. of Customer</font>
+				</th>
+				<th>
+					<font color="#DD1D21">Volume ( L )</font>
+				</th>
+				<th>
+					<font color="#DD1D21">No. of Customer</font>
+				</th>
+				<th>
+					<font color="#DD1D21">Volume ( L )</font>
+				</th>
+				<th>
+					<font color="#DD1D21">No. of Customer</font>
+				</th>
+				<th>
+					<font color="#DD1D21">Volume ( L )</font>
+				</th>
+				<th>
+					<font color="#DD1D21">No. of Customer</font>
+				</th>
+				<th>
+					<font color="#DD1D21">Volume ( L )</font>
+				</th>
+				<th>
+					<font color="#DD1D21">No. of Customer</font>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+				
+					<tr>
+						<th bgcolor="#fbce07" align="left">
+							Main Branch						</th>
+					</tr>
+					<tr>
+					
+						<th align="left">
+							<font color="#DD1D21">Overall</font>
+						</th>
+
+					
+					<td>0</td>
+					<td>1</td>
+					<td>1.000</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					</tr>
+				
+				
+						<td>
+							<font color="#DD1D21">Vacant DSR (The Legend) (IN)</font>
+						</td>
+
+					
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					</tr>
+				
+				
+						<td>
+							<font color="#DD1D21">Vacant DSR (The Legend) (IN)</font>
+						</td>
+
+					
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					</tr>
+				
+				
+						<td>
+							<font color="#DD1D21">The Legend (IN)</font>
+						</td>
+
+					
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					</tr>
+				
+				
+						<td>
+							<font color="#DD1D21">Dummy Distrib</font>
+						</td>
+
+					
+					<td>0</td>
+					<td>1</td>
+					<td>1.000</td>
+					<td>1</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					</tr>
+						</tbody>
+	</table>
+</body>
+
+</html>

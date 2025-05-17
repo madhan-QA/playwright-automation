@@ -1,0 +1,9 @@
+setup.py
+page/__init__.py
+page/base_page.py
+playwright_automation.egg-info/PKG-INFO
+playwright_automation.egg-info/SOURCES.txt
+playwright_automation.egg-info/dependency_links.txt
+playwright_automation.egg-info/top_level.txt
+tests/__init__.py
+tests/test_example_pytest.py
