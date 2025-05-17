@@ -1,0 +1,16 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Playwright
+screenshots/
+logs/
+test-results/
+trace*.zip
+reports/
+
+# Environment
+.env
+venv/

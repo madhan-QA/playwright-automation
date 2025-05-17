@@ -14,3 +14,15 @@ playwright install
 
 pip install pytest
 
+
+
+# to remove cache files before commit
+
+chmod +x cleanup_playwright_repo.py
+
+Before committing code:
+ python cleanup_playwright_repo.py
+To see what would be deleted without actually deleting:
+ python cleanup_playwright_repo.py --dry-run
+To clean everything except logs:
+ python cleanup_playwright_repo.py --keep-logs
