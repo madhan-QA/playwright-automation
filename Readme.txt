@@ -9,10 +9,30 @@ venv\Scripts\activate
 python3 -m venv venv
 source venv/bin/activate
 
+# install dependencies
 pip install -r requirements.txt
-playwright install
 
+#install Brwosers
+playwright install
 pip install pytest
+
+
+#to run all the test
+pytest
+
+#to run a specfic test
+pytest tests/test_example.py
+
+#to run a test in in visible mode
+pytest tests/test_example.py --headed
+
+#to run a test in different Brwosers
+pytest --browser chromium
+pytest --browser firefox
+pytest --browser webkit
+
+
+
 
 
 

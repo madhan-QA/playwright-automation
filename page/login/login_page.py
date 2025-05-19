@@ -41,50 +41,32 @@ class LoginPage(BasePage):
             # Click login button
             self.click_element(self.LOGIN_BUTTON)
 
+              # Wait for network activity to complete after login
+            self.logger.info("Waiting for network activity to complete")
+            try:
+                self.wait_for_state(state="networkidle", timeout=15000)
+            except Exception as e:
+                self.logger.warning(f"Network did not reach idle state: {str(e)}")
             
-            # Wait for navigation to complete
-            self.wait_for_dashboard_and_dismiss_release_notes()
+            # Take a screenshot to see the state after login
+            time.sleep(2)
 
+            self.logger.info("Taking screenshot after login")
+            self.take_screenshot(name="post_login.png")
+            
+
+
+            # Check for and dismiss the dialog
+            self.wait_for_state()
+            if self.is_element_visible(self.CANCEL_DIALOG_BUTTON):
+                self.logger.info("Release notes dialog found. Attempting to dismiss.")
+                self.click_element(self.CANCEL_DIALOG_BUTTON)
+            else:
+                self.logger.info("Release notes dialog not present.")
+          
+        
         except Exception as e:
             self.logger.error(f"Login failed: {str(e)}")
             # Take screenshot on failure
             self.page.screenshot(path="screenshots/login_failure.png")
             return False    
-
-
-    def wait_for_dashboard_and_dismiss_release_notes(self, expected_url_keyword="dashboard", timeout=10000):
-        """
-        Waits for navigation to dashboard and dismisses the release notes dialog if present.
-        
-        Args:
-            expected_url_keyword (str): Keyword to check in the URL (default: 'dashboard')
-            timeout (int): Maximum wait time in seconds
-        """
-        self.logger.info("Waiting for dashboard page to load...")
-
-        # Wait up to `timeout` seconds for expected URL
-        current_url = ""
-        for _ in range(timeout):
-            current_url = self.page.url
-            if expected_url_keyword in current_url:
-                break
-            time.sleep(1)
-
-        self.logger.info(f"Final URL after login: {current_url}")
-
-        # Check if dashboard loaded
-        if expected_url_keyword in current_url:
-            self.logger.info("User successfully navigated to dashboard.")
-
-            if self.is_element_visible(self.CANCEL_DIALOG_BUTTON, timeout=5000):
-                self.logger.info("Release notes dialog found. Attempting to dismiss.")
-                self.click_element(self.CANCEL_DIALOG_BUTTON)
-            else:
-                self.logger.info("Release notes dialog not present.")
-        else:
-            self.logger.warning(f"User is not on the expected '{expected_url_keyword}' page.")
-    
-        
-
-
-        

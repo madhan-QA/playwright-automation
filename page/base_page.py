@@ -67,7 +67,7 @@ class BasePage:
             self.logger.error(f"Error filling field {locator}: {str(e)}")
             return False
     
-    def is_element_visible(self, locator, timeout=5000):
+    def is_element_visible(self, locator, timeout=1000):
         """Check if element is visible"""
         try:
             return self.page.locator(locator).is_visible(timeout=timeout)
@@ -130,7 +130,7 @@ class BasePage:
             
 
 
-    def is_element_present(self, locator, timeout=5000):
+    def is_element_present(self, locator, timeout=10000):
         """Check if element exists in the DOM"""
         try:
             self.page.locator(locator).wait_for(timeout=timeout)
