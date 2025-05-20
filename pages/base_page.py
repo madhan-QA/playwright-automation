@@ -67,7 +67,7 @@ class BasePage:
             self.logger.error(f"Error filling field {locator}: {str(e)}")
             return False
     
-    def is_element_visible(self, locator, timeout=1000):
+    def is_element_visible(self, locator, timeout=5000):
         """Check if element is visible"""
         try:
             return self.page.locator(locator).is_visible(timeout=timeout)
@@ -152,8 +152,30 @@ class BasePage:
     def select_dropdown_by_text(self, locator, option_text):
         """Select an option from a dropdown by visible text"""
         try:
+            self.page.locator(locator).evaluate("""element => {
+            element.style.visibility = 'visible';
+            element.style.display = 'block';
+            }""")
+
+
+            dropdown_locator = self.page.locator(locator)
+            dropdown_locator.wait_for(state="visible", timeout=30000)
+            
+            # Get all the options in the dropdown
+            options = dropdown_locator.locator('option').all_text_contents()
+            
+            # Log the available options
+            self.logger.info(f"Available options in the dropdown: {options}")
+
+            # Check if the provided option_text exists in the dropdown options
+            if option_text not in options:
+                self.logger.error(f"Option '{option_text}' not found in dropdown options.")
+                return False
+                
             self.logger.info(f"Selecting '{option_text}' from dropdown: {locator}")
-            self.page.locator(locator).select_option(label=option_text)
+
+            
+            self.page.locator(locator).select_option(label=option_text, force=True)  # Use force=True to bypass visibility checks
             return True
         except Exception as e:
             self.logger.error(f"Failed to select '{option_text}' from {locator}: {str(e)}")

@@ -1,0 +1,7 @@
+{
+    "login": {
+        "url": "https://demowebsite/login",
+        "email": "demousername",
+        "password": "demopassword"
+    }
+}

@@ -10,9 +10,9 @@ from bs4 import BeautifulSoup
 
 
 # Import page objects - adjust import paths based on your structure
-from page.login.login_page import LoginPage
-from page.dashboard.dashboard_page import DashboardPage
-from page.dashboard.report_page import ReportPage
+from pages.login.login_page import LoginPage
+from pages.dashboard.dashboard_page import DashboardPage
+from pages.dashboard.report_page import ReportPage
 
 # Import report validator
 # from common_utils.report_validator import ReportValidator, ReportValidationRunner
@@ -47,18 +47,18 @@ def load_config(config_path):
 @pytest.fixture
 def login_config():
     """Fixture to provide login configuration"""
-    return load_config('input/login_config.json')
+    return load_config('data/login_config.json')
 
 @pytest.fixture
 def reports_navigation_config():
     """Fixture to provide reports configuration"""
-    return load_config('input/reports_navigation.json')
+    return load_config('data/reports_navigation.json')
 
 @pytest.fixture
 def validator_config():
     """Fixture to provide validator configuration"""
   
-    return load_config('input/validator_config.json')
+    return load_config('data/validator_config.json')
 
 @pytest.fixture
 def download_path():

@@ -4,7 +4,7 @@ Login page object
 
 import time
 
-from page.base_page import BasePage
+from pages.base_page import BasePage
 
 class LoginPage(BasePage):
     """Page object for login page"""
@@ -14,7 +14,9 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = "role=textbox[name='Password *']"
     LOGIN_BUTTON = "role=button[name='Log in']"
     CANCEL_DIALOG_BUTTON = "div[role='button'][aria-label='Cancel Dialog']"
-    FEATURES_CARD="//label[text()='Check Out For New Features']"
+    FEATURES_CARD='xpath=//*[@id="dialogContent_0"]//label[contains(text(), "Check Out For New Features")]'
+
+
 
 
     
@@ -41,29 +43,23 @@ class LoginPage(BasePage):
             # Click login button
             self.click_element(self.LOGIN_BUTTON)
 
-              # Wait for network activity to complete after login
-            self.logger.info("Waiting for network activity to complete")
-            try:
-                self.wait_for_state(state="networkidle", timeout=15000)
-            except Exception as e:
-                self.logger.warning(f"Network did not reach idle state: {str(e)}")
-            
             # Take a screenshot to see the state after login
-            time.sleep(2)
-
+            time.sleep(10)
             self.logger.info("Taking screenshot after login")
             self.take_screenshot(name="post_login.png")
             
 
 
             # Check for and dismiss the dialog
-            self.wait_for_state()
-            if self.is_element_visible(self.CANCEL_DIALOG_BUTTON):
-                self.logger.info("Release notes dialog found. Attempting to dismiss.")
-                self.click_element(self.CANCEL_DIALOG_BUTTON)
-            else:
-                self.logger.info("Release notes dialog not present.")
-          
+            current_url = self.page.url
+            self.logger.info(f"current url:{current_url}")
+            if "dashboard" in current_url:
+                if self.is_element_visible(self.CANCEL_DIALOG_BUTTON):
+                    self.logger.info("Release notes dialog found. Attempting to dismiss.")
+                    self.click_element(self.CANCEL_DIALOG_BUTTON)
+                else:
+                    self.logger.info("Release notes dialog not present.")
+            
         
         except Exception as e:
             self.logger.error(f"Login failed: {str(e)}")

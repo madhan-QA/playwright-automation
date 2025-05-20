@@ -4,11 +4,11 @@ import os
 from playwright.sync_api import Page, expect
 
 # Import page objects - adjust import paths based on your structure
-from page.login_page import LoginPage
-from page.dashboard_page import DashboardPage
-from page.report_page import ReportPage
+from pages.login.login_page import LoginPage
+from pages.dashboard.dashboard_page import DashboardPage
+from pages.dashboard.report_page import ReportPage
 
-def load_config(config_path='input/login_config.json'):
+def load_config(config_path='data/login_config.json'):
     """Load test configuration"""
     try:
         with open(config_path, 'r') as config_file:

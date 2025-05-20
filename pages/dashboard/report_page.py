@@ -4,7 +4,7 @@ Report page object
 import os
 from common_utils.utils import Utils
 
-from page.base_page import BasePage
+from pages.base_page import BasePage
 
 
 

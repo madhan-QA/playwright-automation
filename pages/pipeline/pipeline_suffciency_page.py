@@ -1,7 +1,7 @@
 """
 Dashboard page object
 """
-from page.base_page import BasePage
+from pages.base_page import BasePage
 from playwright.sync_api import Page, expect
 import time
 
@@ -30,8 +30,14 @@ class GraphPage(BasePage):
         self.chart_legend = "div.legend-container"
 
         # Filter selectors - adjust as per actual DOM
-        self.filter_dropdown = "#filter-dropdown"
-        self.filter_options = ".filter-option"
+        self.FILTERS_BUTTON = 'xpath=//*[@id="mdToolbar"]//button[.//span[contains(text(), "Filters")]]'
+        self.BRANCH_FILTER= 'xpath=//select[@name="select_branch"]'
+        self.DSR_FILTER='xpath=//select[@name="select_dsr"]'
+        self.LOB_FILTER='xpath=//select[@name="lob"]'
+        self.TIER_FILTER='xpath=//select[@name="Tier"]'
+        self.FILTERS_SEARCH = 'xpath=//*[@id="filter_list"]//button[.//span[contains(text(), "Search")]]'
+
+
 
     def navigate_to_pipeline_sufficiency(self):
         """Navigate to the Pipeline Sufficiency page."""
@@ -64,29 +70,73 @@ class GraphPage(BasePage):
         """Extract .data-value text from a graph, safely handling missing elements."""
         graph = self.page.locator(graph_selector)
         try:
-            graph.wait_for_state(state="visible", timeout=50000)
-        except:
-            return ["Graph not found"]
+            graph.wait_for(state="visible", timeout=5000)
+        except Exception as e:
+            self.logger.warning(f"Graph not found for selector: {graph_selector}. Error: {str(e)}")
+            return {"status": "not_found", "values": []}
 
         data_elements = graph.locator(".data-value")
         count = data_elements.count()
         if count == 0:
-            return ["No data"]
-        return [data_elements.nth(i).inner_text() for i in range(count)]
+            return {"status": "no_data", "values": []}
+
+        values = []
+        for i in range(count):
+            try:
+                text = data_elements.nth(i).inner_text().strip()
+                values.append(text)
+            except Exception as e:
+                self.logger.warning(f"Failed to read data-value at index {i} for {graph_selector}: {str(e)}")
+                values.append("error")
+
+        return {"status": "ok", "values": values}
+
 
     def get_all_graph_data(self):
-        """Fetch data values from all graphs."""
+        """Fetch data values and status from all graphs."""
         return {
             key: self.get_graph_data(selector)
             for key, selector in self.graph_containers.items()
         }
 
-    def change_filter(self, filter_value):
-        """Change the dashboard filter and wait for graphs to reload."""
-        self.click_element(self.filter_dropdown)
-        self.click_element(f"{self.filter_options}:has-text('{filter_value}')")
+
+    def change_filter(self, branch=None, dsr=None, lob=None, tier=None):
+        """Change a specific dashboard filter and trigger graph reload."""
+
+        # Step 1: Click the Filters button to open the filter modal/section
+        self.click_element(self.FILTERS_BUTTON)
+
+          # Step 2: Prepare mapping of filter names to locators and values
+        filters_to_apply = {
+            self.BRANCH_FILTER: branch,
+            self.DSR_FILTER: dsr,
+            self.LOB_FILTER: lob,
+            self.TIER_FILTER: tier
+        }
+
+        # Step 3: Apply each filter if a value is provided
+        for locator, value in filters_to_apply.items():
+            if value:
+                success = self.select_dropdown_by_text(locator, value)
+                if not success:
+                    self.logger.error(f"Failed to apply filter for locator: {locator} with value: {value}")
+                    return False
+
+
+        # Step 4: Select the dropdown option
+        success = self.select_dropdown_by_text(locator, value)
+        if not success:
+            return False
+
+        # Step 5: Click the Search button to apply filters
+        self.click_element(self.FILTERS_SEARCH)
+
+        # Step 6: Wait for graphs to load
         self.wait_for_graphs_to_load()
-        time.sleep(2)  # Optional delay for graph rendering
+        time.sleep(2)  # Optional wait for rendering
+
+        return True
+
 
     def get_branch_value(self):
         """Return the current selected branch value."""

@@ -1,4 +1,4 @@
-git clone https://your-repo-url.git
+git clone git@github.com:madhan-QA/playwright-automation.git
 cd playwright_automation
 
 # On Windows
@@ -17,6 +17,7 @@ playwright install
 pip install pytest
 
 
+
 #to run all the test
 pytest
 
@@ -32,12 +33,18 @@ pytest --browser firefox
 pytest --browser webkit
 
 
-
+#project structure 
+playwright-python/
+├── tests/ # Test files
+├── pages/ # Page Object Model (POM) classes
+├── data/ # Input JSON files (test data)
+├── conftest.py # Pytest setup and fixtures
+├── requirements.txt # Python dependencies
+└── README.md # This file 
 
 
 
 # to remove cache files before commit
-
 chmod +x cleanup_playwright_repo.py
 
 Before committing code:
@@ -46,3 +53,8 @@ To see what would be deleted without actually deleting:
  python cleanup_playwright_repo.py --dry-run
 To clean everything except logs:
  python cleanup_playwright_repo.py --keep-logs
+
+
+
+
+

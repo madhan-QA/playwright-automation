@@ -1,7 +1,7 @@
 """
 Dashboard page object
 """
-from page.base_page import BasePage
+from pages.base_page import BasePage
 
 class DashboardPage(BasePage):
     """Page object for dashboard page"""
