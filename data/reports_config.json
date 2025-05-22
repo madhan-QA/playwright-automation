@@ -32,3 +32,7 @@
         "negative_check_columns": ["Cross-sell", "Up-sell", "Total"]
     }
 }
+
+
+ {"dsr": "Dummy Distrib", "lob": "B2C", "tier": "Mainstream"},
+    

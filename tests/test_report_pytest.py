@@ -217,7 +217,6 @@ def test_download_and_validate_reports(page: Page, login_config, reports_navigat
 #     # Initialize pages
 #     dashboard_page = DashboardPage(page)
 #     report_page = ReportPage(page)
-#     page.pause() 
 
     
 #     # Always navigate to reports section first

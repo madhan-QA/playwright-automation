@@ -31,10 +31,10 @@ class GraphPage(BasePage):
 
         # Filter selectors - adjust as per actual DOM
         self.FILTERS_BUTTON = 'xpath=//*[@id="mdToolbar"]//button[.//span[contains(text(), "Filters")]]'
-        self.BRANCH_FILTER= 'xpath=//select[@name="select_branch"]'
-        self.DSR_FILTER='xpath=//select[@name="select_dsr"]'
-        self.LOB_FILTER='xpath=//select[@name="lob"]'
-        self.TIER_FILTER='xpath=//select[@name="Tier"]'
+        self.BRANCH_FILTER = 'xpath=//md-select[@name="select_branch"]'
+        self.DSR_FILTER = 'xpath=//md-select[@name="select_dsr"]'
+        self.LOB_FILTER = 'xpath=//md-select[@name="lob"]'
+        self.TIER_FILTER = 'xpath=//md-select[@name="Tier"]'
         self.FILTERS_SEARCH = 'xpath=//*[@id="filter_list"]//button[.//span[contains(text(), "Search")]]'
 
 
@@ -102,10 +102,10 @@ class GraphPage(BasePage):
 
     def change_filter(self, branch=None, dsr=None, lob=None, tier=None):
         """Change a specific dashboard filter and trigger graph reload."""
-
         # Step 1: Click the Filters button to open the filter modal/section
+        
         self.click_element(self.FILTERS_BUTTON)
-
+ 
           # Step 2: Prepare mapping of filter names to locators and values
         filters_to_apply = {
             self.BRANCH_FILTER: branch,
@@ -117,23 +117,22 @@ class GraphPage(BasePage):
         # Step 3: Apply each filter if a value is provided
         for locator, value in filters_to_apply.items():
             if value:
+                self.logger.info(f"Attempting to set {locator} to {value}")
                 success = self.select_dropdown_by_text(locator, value)
                 if not success:
-                    self.logger.error(f"Failed to apply filter for locator: {locator} with value: {value}")
+                    self.logger.info(f"Failed to apply filter for locator: {locator} with value: {value}")
                     return False
 
 
-        # Step 4: Select the dropdown option
-        success = self.select_dropdown_by_text(locator, value)
-        if not success:
-            return False
 
         # Step 5: Click the Search button to apply filters
         self.click_element(self.FILTERS_SEARCH)
+        self.logger.info("Clicked Search button to apply filters")
+
 
         # Step 6: Wait for graphs to load
         self.wait_for_graphs_to_load()
-        time.sleep(2)  # Optional wait for rendering
+        self.page.wait_for_timeout(2000)   # Optional wait for rendering
 
         return True
 

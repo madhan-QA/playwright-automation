@@ -121,6 +121,15 @@ def find_files_to_clean(repo_path, keep_logs=False, keep_screenshots=False):
     logs_dir = os.path.join(repo_path, 'logs')
     if os.path.exists(logs_dir) and not keep_logs:
         to_remove.append(logs_dir)
+
+    # Handle allure Results
+    allure_results_dir = os.path.join(repo_path, 'allure-results')
+    if os.path.exists(allure_results_dir):
+        to_remove.append(allure_results_dir)
+
+    allure_report_dir = os.path.join(repo_path, 'allure-report')
+    if os.path.exists(allure_report_dir):
+        to_remove.append(allure_report_dir)    
         
     return to_remove
 

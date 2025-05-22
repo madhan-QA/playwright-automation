@@ -10,6 +10,8 @@ logs/
 test-results/
 trace*.zip
 reports/
+allure-report/
+allure-results/
 
 # Environment
 .env

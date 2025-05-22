@@ -1,0 +1,20 @@
+{
+  "filters": [
+    {"tier":"Premium"},
+    {"tier":"Mainstream"},
+    {"dsr": "Dummy Distrib", "lob": "B2B", "tier": "Mainstream"},
+    {"dsr": "Dummy Distrib", "lob": "B2B", "tier": "Premium"},
+    {"dsr": "Dummy Distrib", "lob": "B2C", "tier": "Premium"},
+    {"branch": "Main Branch", "dsr": "Dummy Distrib", "lob": "B2B", "tier": "Mainstream"},
+    {"branch": "Main Branch", "dsr": "Dummy Distrib", "lob": "B2B", "tier": "Premium"},
+    {"branch": "Main Branch", "dsr": "Dummy Distrib", "lob": "B2C", "tier": "Mainstream"},
+    {"branch": "Main Branch", "dsr": "Dummy Distrib", "lob": "B2C", "tier": "Premium"},
+    {"branch": "Main Branch", "dsr": "The Legend (IN)", "lob": "B2B", "tier": "Mainstream"},
+    {"branch": "Main Branch", "dsr": "The Legend (IN)", "lob": "B2C", "tier": "Mainstream"},
+    {"branch": "Main Branch", "dsr": "The Legend (IN)", "lob": "B2B", "tier": "Premium"},
+    {"branch": "Main Branch", "dsr": "The Legend (IN)", "lob": "B2C", "tier": "Premium"},
+    {"branch": "Main Branch", "dsr": "Vacant DSR (The Legend) (IN)", "lob": "B2C", "tier": "Premium"},
+    {"lob": "B2B", "tier": "Premium"},
+    {"lob": "B2C", "tier": "Premium"}
+  ]
+}

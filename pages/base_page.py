@@ -150,37 +150,36 @@ class BasePage:
             return False
         
     def select_dropdown_by_text(self, locator, option_text):
-        """Select an option from a dropdown by visible text"""
+        """Select an option from an AngularJS Material md-select dropdown"""
         try:
-            self.page.locator(locator).evaluate("""element => {
-            element.style.visibility = 'visible';
-            element.style.display = 'block';
-            }""")
+            # Step 1: Click the select dropdown
+            dropdown = self.page.locator(locator)
+            dropdown.wait_for(state="visible", timeout=5000)
+            dropdown.click(force=True)
+            self.page.wait_for_timeout(300)
 
-
-            dropdown_locator = self.page.locator(locator)
-            dropdown_locator.wait_for(state="visible", timeout=30000)
             
-            # Get all the options in the dropdown
-            options = dropdown_locator.locator('option').all_text_contents()
-            
-            # Log the available options
-            self.logger.info(f"Available options in the dropdown: {options}")
+            # Step 2: Filter only visible 'md-option's with the exact text
+            option_xpath = f'//div[contains(@class, "md-select-menu-container")]//md-option[.//div[normalize-space(text())="{option_text}"] or normalize-space(text())="{option_text}"]'
+            option_locator = self.page.locator(option_xpath)
+            option_locator.first.wait_for(state="visible", timeout=5000)
 
-            # Check if the provided option_text exists in the dropdown options
-            if option_text not in options:
-                self.logger.error(f"Option '{option_text}' not found in dropdown options.")
+            # Optional: Log found matching options
+            count = option_locator.count()
+            self.logger.info(f"Found {count} visible options with text '{option_text}'")
+
+            if count == 0:
+                self.logger.info(f"Option '{option_text}' not found or is hidden.")
                 return False
-                
-            self.logger.info(f"Selecting '{option_text}' from dropdown: {locator}")
 
-            
-            self.page.locator(locator).select_option(label=option_text, force=True)  # Use force=True to bypass visibility checks
+            # Step 4: Click the first matching visible option
+            option_locator.first.click(force=True)
             return True
-        except Exception as e:
-            self.logger.error(f"Failed to select '{option_text}' from {locator}: {str(e)}")
-            return False    
 
+        except Exception as e:
+            self.logger.info(f"Failed to select '{option_text}' from {locator}: {str(e)}")
+            return False
+ 
     def upload_file(self, locator, file_path):
         """Upload a file to an input[type='file']"""
         try:
@@ -192,8 +191,30 @@ class BasePage:
             return False  
         
     def take_screenshot(self, name="screenshot"):
-        """Take a screenshot of the current page"""
-        path = f"screenshot/{name}.png"
-        self.logger.info(f"Taking screenshot: {path}")
-        self.page.screenshot(path=path)  
+            """Take a screenshot of the current page"""
+            path = f"screenshot/{name}.png"
+            self.logger.info(f"Taking screenshot: {path}")
+            self.page.screenshot(path=path)  
+
+    def scroll_if_not_visible_then_click(self, locator):
+        element = self.page.locator(locator)
+
+        # Wait until attached
+        element.wait_for(state="attached", timeout=5000)
+
+        # Check if element is off-screen
+        is_off_screen = element.evaluate(
+            """el => {
+                const rect = el.getBoundingClientRect();
+                return rect.bottom <= 0 || rect.top >= window.innerHeight;
+            }"""
+        )
+
+        if is_off_screen:
+            # Scroll up slightly — this assumes vertical scroll
+            self.page.mouse.wheel(0, -500)
+            self.page.wait_for_timeout(1500)  # Wait 1.5 seconds for scroll to settle
+
+        # Then use your existing safe click method
+        self.click_element(self.locator)    
 
