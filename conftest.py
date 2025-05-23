@@ -5,10 +5,15 @@ import os
 import json
 import pytest
 import logging
+from dotenv import load_dotenv
+
 from playwright.sync_api import sync_playwright, Page, Browser
+
 
 # Import page objects
 from pages.login.login_page import LoginPage
+
+load_dotenv()
 
 # ------------------- #
 # Utility functions
@@ -38,10 +43,37 @@ def load_json_config(path: str, create_dirs: bool = False) -> dict:
 
 
 @pytest.fixture(scope="session")
-def login_config():
-    """Session-scoped fixture that provides login configuration."""
-    return load_json_config('data/login_config.json', create_dirs=True)
+def login_config(request):
+    """Build login config from environment variables and return it."""
+    config = {
+        "login": {
+            "url": os.getenv("BASE_URL"),
+            "email": os.getenv("EMAIL"),
+            "password": os.getenv("PASSWORD")
+        }
+    }
 
+    # Optional: Write to login_config.json for other tools or debugging
+    config_path = 'data/login_config.json'
+    os.makedirs(os.path.dirname(config_path), exist_ok=True)
+    with open(config_path, 'w') as f:
+        json.dump(config, f, indent=4)
+
+    # Finalizer to reset login_config.json after all tests
+    def reset_config():
+        empty_config = {
+            "login": {
+                "url": "",
+                "email": "",
+                "password": ""
+            }
+        }
+        with open(config_path, 'w') as f:
+            json.dump(empty_config, f, indent=4)
+
+    request.addfinalizer(reset_config)
+
+    return config
 
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):

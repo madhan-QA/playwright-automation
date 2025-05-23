@@ -21,6 +21,9 @@ pip install pytest
 #to run all the test
 pytest
 
+#to run a test in Headed mode
+pytest --headed
+
 #to run a specfic test
 pytest tests/test_example.py
 
@@ -31,6 +34,23 @@ pytest tests/test_example.py --headed
 pytest --browser chromium
 pytest --browser firefox
 pytest --browser webkit
+
+
+#To run with Allure report
+pip install allure-pytest
+
+#To run all the test with Allure output
+pytest --headed --alluredir=allure-results
+
+#To run specfic test with Allure output
+pytest tests/test_example.py --headed --alluredir=allure-results
+
+#Generate and open report
+allure serve allure-results
+
+#To browser Debug
+page.pause() #Need to add the commend in specfic line where you want to Debug
+
 
 
 #project structure 

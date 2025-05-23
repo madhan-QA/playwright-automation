@@ -1,5 +1,5 @@
 """
-Dashboard page object
+Pipeline sufficiency page object
 """
 from pages.base_page import BasePage
 from playwright.sync_api import Page, expect
@@ -14,7 +14,6 @@ class GraphPage(BasePage):
         # Element locators
         self.PIPELINE_SUFFICIENCY_BUTTON = "role=button[name='Pipeline Sufficiency']"
         self.PIPELINE_SUFFICIENCY_LINK = "a:has-text('Pipeline Sufficiency')"
-        self.PIPELINE_TENDS_LINK = "a:has-text('Trend')"
 
 
         # Centralized graph container selectors by key
@@ -43,6 +42,7 @@ class GraphPage(BasePage):
         """Navigate to the Pipeline Sufficiency page."""
         self.click_element(self.PIPELINE_SUFFICIENCY_BUTTON)
         self.wait_for_state()
+
 
     def wait_for_graphs_to_load(self,timeout=30000):
         for selector in self.graph_containers.values():
