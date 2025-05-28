@@ -12,6 +12,7 @@ trace*.zip
 reports/
 allure-report/
 allure-results/
+allure-result/
 
 # Environment
 .env

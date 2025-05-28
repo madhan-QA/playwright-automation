@@ -25,6 +25,18 @@ class AuthAPIClient(BaseAPIClient):
         
         return response
     
+    def get_user_details(self,user_id:str) -> APIResponse:
+        """Get user details using user ID in payload."""
+        payload = {
+            "and_conditions": {
+                "id": user_id
+            }
+        }    
+        response = self.post("user/fetchUserDetails",data=payload)
+        self.assert_status_code(response, 200)
+        
+        return response
+    
     def get_latest_version(self)-> APIResponse:
         """get latest version of the API"""
         response =self.post("/user/fetchLatestVersion")
@@ -55,12 +67,7 @@ class AuthAPIClient(BaseAPIClient):
        
         return response
     
-    def get_user_profile(self) -> APIResponse:
-        """Get current user profile."""
-        response = self.get("/api/user/profile")
-        self.assert_status_code(response, 200)
-        
-        return response
+    
     
     def verify_token(self, token: str) -> APIResponse:
         """Verify authentication token."""
