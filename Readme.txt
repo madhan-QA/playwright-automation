@@ -14,6 +14,8 @@ pip install -r requirements.txt
 
 #install Brwosers
 playwright install
+pip install allure-pytest
+
 pip install pytest
 
 

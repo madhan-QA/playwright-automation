@@ -3,5 +3,9 @@
         "url": "",
         "email": "",
         "password": ""
+    },
+    "api": {
+        "base_url": "",
+        "timeout": 30000
     }
 }
